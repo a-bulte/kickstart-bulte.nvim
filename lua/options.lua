@@ -60,3 +60,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Preserve the cursor position when closing files
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  desc = 'return cursor to where it was last time closing the file',
+  pattern = '*',
+  command = 'silent! normal! g`"zv',
+})
